@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: shop
+  security:
+    user:
+      name: admin
+      password: secret
+      roles:
+        - USER
+        - ADMIN
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop
+    username: test
+    password: test
+  flyway:
+    enabled: true
+    locations:
+      - classpath:db/migration
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+springdoc:
+  swagger-ui:
+    supported-submit-methods: get, put, post, delete, patch, trace, options, head
+    display-request-duration: true
+    default-model-rendering: model
+    try-it-out-enabled: true
+    display-operation-id: false
+  api-docs:
+    path: /v3/api-docs
+openapi:
+  info:
+    title: Shop API
+    description: API documentation for Shop Service
+    version: 1.0.0
+  servers:
+    - url: http://localhost:8080
+      description: Local server
+  security:
+    - basicAuth: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

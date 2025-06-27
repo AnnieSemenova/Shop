@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: shop_postgres
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: shop
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_9:/var/lib/postgresql/data
+    networks:
+      - shop_network
+
+volumes:
+  postgres_data_9:
+
+networks:
+  shop_network:
